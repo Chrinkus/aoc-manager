@@ -1,3 +1,10 @@
+# Vim
+*.swo
+*.swp
+
+# Project
+build*
+
 # Prerequisites
 *.d
 
