@@ -16,22 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-#include <stdlib.h>
+#pragma once
 
-#include "support_commands.h"
-
-
-int main(int argc, char* argv[])
-{
-        if (argc == 1) {
-                print_missing_args(argv[0]);
-                return EXIT_FAILURE;
-        }
-
-        if (argv[1][0] == '-') {
-                return support_dispatch(argc, argv);
-        }
-
-        return EXIT_SUCCESS;
-}
+int
+command_dispatch(int argc, char* argv[]);
 
