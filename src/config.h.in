@@ -1,0 +1,2 @@
+#cmakedefine AOCM_VERSION_STRING "@AOCM_VERSION_STRING@"
+

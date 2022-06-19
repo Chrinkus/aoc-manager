@@ -21,6 +21,7 @@
 #include <getopt.h>
 
 #include "support_commands.h"
+#include "config.h"
 
 const char* short_opts = "vh";
 const struct option long_opts[] = {
@@ -32,7 +33,7 @@ const struct option long_opts[] = {
 static void
 print_version(void)
 {
-        printf("The most recent version ever\n");
+        printf("aocm v%s\n", AOCM_VERSION_STRING);
 }
 
 static void
