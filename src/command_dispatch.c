@@ -17,13 +17,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 #include "command_dispatch.h"
+#include "run_command.h"
 
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <getopt.h>
 
-const char* short_opts = "h";
-const struct option long_opts[] = {
+const char* command_short_opts = "h";
+const struct option command_long_opts[] = {
         { .name = "help", .has_arg = no_argument, .flag = 0, .val = 'h' },
         { .name = 0, .has_arg = 0, .flag = 0, .val = 0 },
 };
@@ -45,11 +47,12 @@ int
 command_dispatch(int argc, char* argv[])
 {
         for (size_t i = 0; i < num_commands; ++i)
-                if (strcmp(argv[1], commands[i].name) == 0)
+                if (strcmp(argv[0], commands[i].name) == 0)
                         return commands[i].func(argc, argv);
         while (1) {
                 int index = 0;
-                int c = getopt_long(argc, argv, short_opts, long_opts, &index);
+                int c = getopt_long(argc, argv, command_short_opts,
+                        command_long_opts, &index);
 
                 if (c == -1)
                         break;

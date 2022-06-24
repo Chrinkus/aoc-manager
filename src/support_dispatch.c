@@ -20,11 +20,11 @@
 #include <stdio.h>
 #include <getopt.h>
 
-#include "support_commands.h"
+#include "support_dispatch.h"
 #include "config.h"
 
-const char* short_opts = "vh";
-const struct option long_opts[] = {
+const char* support_short_opts = "vh";
+const struct option support_long_opts[] = {
         { .name = "version", .has_arg = no_argument, .flag = 0, .val = 'v' },
         { .name = "help", .has_arg = no_argument, .flag = 0, .val = 'h' },
         { .name = 0, .has_arg = 0, .flag = 0, .val = 0 },
@@ -54,7 +54,8 @@ support_dispatch(int argc, char* argv[])
 {
         while (1) {
                 int index = 0;
-                int c = getopt_long(argc, argv, short_opts, long_opts, &index);
+                int c = getopt_long(argc, argv, support_short_opts,
+                                support_long_opts, &index);
 
                 if (c == -1)
                         break;
